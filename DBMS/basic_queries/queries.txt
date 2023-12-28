@@ -1,0 +1,208 @@
+Basic Queries
+
+Create Table:
+
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT,
+    Salary DECIMAL(10,2),
+    City VARCHAR(50),
+    Country VARCHAR(50)
+);
+
+
+
+Insert Sample Data:
+
+INSERT INTO Customers (CustomerID, Name, Age, Salary, City, Country)
+VALUES
+(1, 'Ramesh', 32, 2000.00, 'Hyderabad', 'India'),
+(2, 'Mukesh', 40, 5000.00, 'New York', 'USA'),
+(3, 'Sumit', 45, 4500.00, 'Muscat', 'Oman'),
+(4, 'Kaushik', 25, 2500.00, 'Kolkata', 'India'),
+(5, 'Hardik', 29, 3500.00, 'Bhopal', 'India'),
+(6, 'Komal', 38, 3500.00, 'Saharanpur', 'India'),
+(7, 'Ayush', 25, 3500.00, 'Delhi', 'India'),
+(8, 'Javed', 29, 3700.00, 'Delhi', 'India');
+
+
+
+Select:
+SELECT * FROM Customers;
+
+Distinct:
+SELECT DISTINCT Country FROM Customers;
+
+Where:
+SELECT * FROM Customers WHERE Age > 30;
+
+And & Or:
+SELECT * FROM Customers WHERE Country = 'India' AND Age > 30;
+
+Order By:
+SELECT * FROM Customers ORDER BY Age DESC;
+
+Insert Into:
+INSERT INTO Customers (Name, Age, Salary, City, Country) VALUES ('John', 28, 3000.00, 'London', 'UK');
+
+Update:
+UPDATE Customers SET Salary = 4000.00 WHERE Name = 'Ramesh';
+
+Delete:
+DELETE FROM Customers WHERE Name = 'John';
+
+Select Top:
+SELECT TOP 3 * FROM Customers;
+
+Like, Wildcards:
+SELECT * FROM Customers WHERE Name LIKE 'Ka%';
+
+In:
+SELECT * FROM Customers WHERE Country IN ('India', 'USA');
+
+Between:
+SELECT * FROM Customers WHERE Age BETWEEN 25 AND 35;
+
+Aliases:
+SELECT Name AS CustomerName, Age AS CustomerAge FROM Customers;
+
+
+Joins (Inner Join, Left Join, Right Join, Full Join):
+-- Inner Join
+SELECT Orders.OrderID, Customers.CustomerName FROM Orders INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+-- Left Join
+SELECT Orders.OrderID, Customers.CustomerName FROM Orders LEFT JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+-- Right Join
+SELECT Orders.OrderID, Customers.CustomerName FROM Orders RIGHT JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+-- Full Join
+SELECT Orders.OrderID, Customers.CustomerName FROM Orders FULL JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+
+Union:
+SELECT City FROM Customers WHERE Country = 'India'
+UNION
+SELECT City FROM Customers WHERE Country = 'USA';
+
+Select Into:
+SELECT * INTO NewCustomers FROM Customers WHERE Country = 'India';
+
+Insert Into Select:
+INSERT INTO CustomersBackup SELECT * FROM Customers;
+
+Constraints:
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    OrderDate DATE,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+
+Not Null:
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(50) NOT NULL,
+    Price DECIMAL(10,2)
+);
+
+
+Unique:
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Email VARCHAR(50) UNIQUE,
+    GPA DECIMAL(3,2)
+);
+
+
+Primary Key:
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50)
+);
+
+
+Foreign Key:
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+
+Check:
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    Quantity INT CHECK (Quantity > 0),
+    Price DECIMAL(10,2)
+);
+
+
+Default:
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Email VARCHAR(50) DEFAULT 'N/A',
+    GPA DECIMAL(3,2)
+);
+
+
+Create Index:
+CREATE INDEX idx_lastname ON Employees(LastName);
+
+Drop:
+DROP TABLE Customers;
+
+Alter:
+ALTER TABLE Employees ADD COLUMN BirthDate DATE;
+
+Auto Increment:
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50)
+);
+
+Views:
+CREATE VIEW HighSalaries AS
+SELECT * FROM Employees WHERE Salary > 50000;
+
+
+Null Values:
+SELECT * FROM Employees WHERE BirthDate IS NULL;
+
+Group By:
+SELECT Country, COUNT(*) FROM Customers GROUP BY Country;
+
+Having Functions:
+SELECT Country, AVG(Age) FROM Customers GROUP BY Country HAVING AVG(Age) > 30;
+
+Null Functions:
+SELECT Name, COALESCE(Salary, 0) AS ActualSalary FROM Employees;
+
+
+Create Orders Table:
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    OrderDate DATE,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+
+Insert Sample Data into Orders Table:
+INSERT INTO Orders (OrderID, CustomerID, OrderDate)
+VALUES
+(101, 1, '2023-01-10'),
+(102, 2, '2023-01-12'),
+(103, 3, '2023-01-15'),
+(104, 1, '2023-01-18'),
+(105, 4, '2023-01-20');
+Now, let's use this Orders table for the join queries:
+
+
+-- Create CustomersBackup Table
+SELECT * INTO CustomersBackup FROM Customers WHERE 1 = 0;
+
+-- Insert Data into CustomersBackup
+INSERT INTO CustomersBackup SELECT * FROM Customers;
+The SELECT * INTO CustomersBackup FROM Customers WHERE 1 = 0; statement creates an empty table structure (CustomersBackup) based on the columns of the Customers table. Then, the INSERT INTO CustomersBackup SELECT * FROM Customers; statement inserts all the data from the Customers table into the newly created CustomersBackup table.
