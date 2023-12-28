@@ -1,0 +1,40 @@
+Normalization is a database design technique that organizes data in a relational database to reduce redundancy and dependency. The main goals of normalization are to eliminate data anomalies, ensure data integrity, and create a well-structured database that is easy to maintain and update. Here are the key concepts of normalization:
+
+1. Issues Addressed by Normalization:
+Data Redundancy: Repetition of data in large relations.
+Difficulty in Maintenance: Searching through many records for updates.
+Wastage of Disk Space: Poor utilization of resources.
+Increased Likelihood of Errors: Inconsistencies in the data.
+
+2. What is Normalization?
+Definition: The process of organizing data in the database.
+Objective: Minimize redundancy, eliminate anomalies (Insertion, Update, Deletion), and divide large tables into smaller, well-structured relations.
+Achieved by: Decomposing relations into relations with fewer attributes.
+
+3. Why Do We Need Normalization?
+Data Modification Anomalies: Insertion, Deletion, and Updation Anomalies.
+Insertion Anomaly: Inability to insert new data due to missing information.
+Deletion Anomaly: Unintended loss of important data during deletion.
+Updation Anomaly: Requirement to update multiple rows for a single data value update.
+Data Integrity Issues: Failure to eliminate anomalies leads to data integrity problems as the database grows.
+
+4. Types of Normal Forms:
+1NF (First Normal Form): Atomic values in a relation.
+2NF (Second Normal Form): 1NF + Non-key attributes fully functionally dependent on the primary key.
+3NF (Third Normal Form): 2NF + No transitive dependency exists.
+BCNF (Boyce Codd's Normal Form): A stronger definition of 3NF.
+4NF (Fourth Normal Form): BCNF + No multi-valued dependency.
+5NF (Fifth Normal Form): 4NF + No join dependency, joining should be lossless.
+
+5. Advantages of Normalization:
+Data Redundancy Reduction: Minimizes data duplication.
+Greater Database Organization: Well-structured and easy to manage.
+Data Consistency: Maintains consistency within the database.
+Flexible Database Design: Supports changes in requirements.
+Relational Integrity: Enforces relational integrity concepts.
+
+6. Disadvantages of Normalization:
+Need for Clear User Requirements: Database design requires a clear understanding of user needs.
+Performance Degradation: Higher normalization forms (e.g., 4NF, 5NF) may degrade performance.
+Time-Consuming Process: Normalizing relations to higher degrees is time-consuming.
+Risk of Bad Database Design: Careless decomposition may lead to design problems.
