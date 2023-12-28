@@ -1,1 +1,8 @@
+A database is a collection of data that is organized so the information within can be easily accessed later. Your data will be more accurate, reliable, and easy to use if you have a database.
 
+The need for a database arises due to the following reasons:
+-Efficient Data Management
+-Data Integrity
+-Data Security
+-Data Redundancy Reduction
+-Data Consistency
