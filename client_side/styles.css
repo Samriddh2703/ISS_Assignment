@@ -1,0 +1,16 @@
+/* Add your custom styles here */
+body {
+    background-color: #aed2f7;
+}
+
+.container {
+    background-color: rgb(230, 165, 239);
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Add more custom styles as needed */
