@@ -1,0 +1,7 @@
+employee table - employee id, employee name, salary, gender, location 
+
+
+1. write a query to get genderwise count of females based on location
+2. get me location wise highest salary
+3. location wise second salary for females
+4. remove the duplicates , employee id is primary key
